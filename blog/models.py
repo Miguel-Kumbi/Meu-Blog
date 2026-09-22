@@ -12,6 +12,9 @@ class Category(models.Model):
 		unique=True
 	)
 
+	class Meta:
+		verbose_name_plural = "Categories"
+
 	def __str__(self):
 		return self.name
 
