@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{post.title}}
+{% endblock %}
+
+{% block content %}
+	<article>
+		<h1>{{ post.title }}</h1>
+		<p>
+			Autor: {{ post.author }}
+		</p>
+
+		<p>
+			Categoria: {{ post.category }}
+		</p>
+
+		<p>
+			Criado em: {{ post.created_at }}
+		</p>
+
+		<div>
+			{{ post.content }}
+		</div>
+	</article>
+{% endblock %}
