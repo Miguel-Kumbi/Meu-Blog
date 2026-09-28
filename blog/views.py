@@ -15,6 +15,7 @@ def post_detail(request, slug):
 
     return render(request, 'blog/post_detail.html', context)
 
+
 def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -30,5 +31,21 @@ def post_create(request):
     else:
         form = PostForm()
     context = {'form':form}
+
+    return render(request, 'blog/post_form.html', context)
+
+
+def post_update(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect(post_detail, slug=post.slug)
+    else:
+        form = PostForm(instance=post)
+    context = {'form': form, 'post': post}
 
     return render(request, 'blog/post_form.html', context)

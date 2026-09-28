@@ -22,5 +22,9 @@
 		<div>
 			{{ post.content }}
 		</div>
+
+		<p>
+			<a href="{% url 'post_update' post.slug %}">Editar Post</a>
+		</p>
 	</article>
 {% endblock %}

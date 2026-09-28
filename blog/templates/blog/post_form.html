@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Criar Post
+	{% if post %}
+		Editar Post
+	{% else %}
+		Criar Post
+	{% endif %}
 {% endblock %}
 
 {% block content %}
 
-	<h1>Criar Post</h1>
+	{% if post %}
+		<h1>Editar Post</h1>
+	{% else %}
+		<h1>Criar Post</h1>
+	{% endif %}
 
 	<form method="post">
 
@@ -15,7 +23,11 @@
 		{{ form.as_p }}
 
 		<button type="submit">
-			Criar Post
+			{% if post %}
+				Guardar Alteracões
+			{% else %}
+				Criar Post
+			{% endif %}
 		</button>
 
 	</form>
