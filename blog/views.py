@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Post
 from .forms import PostForm
 
@@ -66,20 +67,16 @@ def post_delete(request, slug):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username') # Pegar dados enviados do formulário.
-        password = request.POST.get('password')
+        form = AuthenticationForm(request, data=request.POST) # Pegar dados enviados do formulário.
 
-        user = authenticate(request, username=username, password=password) # Verificar as credencias no BD.
-        if user is not None:
-            login(request, user) # Criar/Atualizar a sessão de autenticação.
+        if form.is_valid():
+            login(request, form.get_user()) # Criar/Atualizar a sessão de autenticação.
 
             return redirect('home')
-
-        context = {'error': 'username ou password inválidos!'}
-
-        return render(request, 'blog/login.html', context)
-
-    return render(request, 'blog/login.html')
+    else:
+        form = AuthenticationForm()
+    context = {'form': form}
+    return render(request, 'blog/login.html', context)
 
 
 def logout_view(request):
