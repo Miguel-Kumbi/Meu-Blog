@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Apagar Post
+{% endblock %}
+
+{% block content %}
+
+	<h1>Apagar Post</h1>
+
+	<p>
+		Tem certeza que deseja apagar o post
+		"<strong>{{ post.title }}</strong>"?
+	</p>
+
+	<form method="post">
+
+		{% csrf_token %}
+
+		<button type="submit">
+			Sim, apagar
+		</button>
+
+		<a href="{% url 'post_detail' post.slug %}">
+			Cancelar
+		</a>
+
+	</form>
+
+{% endblock %}

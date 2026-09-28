@@ -49,3 +49,15 @@ def post_update(request, slug):
     context = {'form': form, 'post': post}
 
     return render(request, 'blog/post_form.html', context)
+
+
+def post_delete(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == 'POST':
+        post.delete()
+
+        return redirect('home')
+
+    context = {'post': post}
+
+    return render(request, 'blog/post_confirm_delete.html', context)
