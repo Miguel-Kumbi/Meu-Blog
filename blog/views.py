@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
 
@@ -18,6 +19,7 @@ def post_detail(request, slug):
     return render(request, 'blog/post_detail.html', context)
 
 
+@login_required # Verifica se há uma autenticacão válida antes de executar  a view. Senão redireciona para o login.
 def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -81,6 +83,6 @@ def login_view(request):
 
 def logout_view(request):
 
-    logout(request)
+    logout(request) # Fecha a sessão de autenticacão
 
     return redirect('home')
