@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from .models import Post
 from .forms import PostForm
 
@@ -39,8 +40,13 @@ def post_create(request):
     return render(request, 'blog/post_form.html', context)
 
 
+@login_required
 def post_update(request, slug):
     post = get_object_or_404(Post, slug=slug)
+
+    if post.author != request.user:
+        return HttpResponseForbidden ('Sem permissão para editar este post.')
+
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
 
@@ -55,8 +61,13 @@ def post_update(request, slug):
     return render(request, 'blog/post_form.html', context)
 
 
+@login_required
 def post_delete(request, slug):
     post = get_object_or_404(Post, slug=slug)
+
+    if post.author != request.user:
+        return HttpResponseForbidden ('Sem permissão para deletar este post.')
+
     if request.method == 'POST':
         post.delete()
 

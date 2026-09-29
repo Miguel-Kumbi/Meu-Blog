@@ -44,7 +44,7 @@ class Post(models.Model):
 	content = models.TextField()
 	author = models.ForeignKey(
 		User,
-		on_delete=models.SET_NULL, # Se um usuário for apagado deixar todos os posts relacionados a ele com NULL.
+		on_delete=models.SET_NULL, # Se um usuário for apagado deixara todos os posts relacionados a ele com NULL.
 		null=True, # Valor NULL quando nenhum valor é preenchido.
 		blank=True # Permite que o usuário envie o formulário sem preencher o campo.
 	)
