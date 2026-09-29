@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Publicar Post
+{% endblock %}
+
+{% block content %}
+
+    <h1>Publicar Post</h1>
+
+    <p>
+        Tem certeza que deseja publicar
+        "<strong>{{ post.title }}</strong>"?
+    </p>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <button type="submit">
+            Sim, publicar
+        </button>
+
+        <a href="{% url 'post_detail' post.slug %}">
+            Cancelar
+        </a>
+
+    </form>
+
+{% endblock %}

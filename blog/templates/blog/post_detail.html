@@ -22,7 +22,12 @@
 		<div>
 			{{ post.content }}
 		</div>
+
 		{% if post.author == user %}
+			<p>
+				<a href="{% url 'post_publish' post.slug %}">Publicar Post</a>
+			</p>
+
 			<p>
 				<a href="{% url 'post_update' post.slug %}">Editar Post</a>
 			</p>
