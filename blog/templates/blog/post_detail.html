@@ -24,10 +24,11 @@
 		</div>
 
 		{% if post.author == user %}
-			<p>
-				<a href="{% url 'post_publish' post.slug %}">Publicar Post</a>
-			</p>
-
+			{% if not post.published_at %}
+				<p>
+					<a href="{% url 'post_publish' post.slug %}">Publicar Post</a>
+				</p>
+			{% endif %}
 			<p>
 				<a href="{% url 'post_update' post.slug %}">Editar Post</a>
 			</p>

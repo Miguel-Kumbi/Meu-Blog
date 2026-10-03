@@ -94,24 +94,3 @@ def post_publish(request, slug):
 		return redirect('post_detail', slug=post.slug)
 
 	return render(request, 'blog/post_confirm_publish.html', {'post': post})
-
-
-def login_view(request):
-	if request.method == 'POST':
-		form = AuthenticationForm(request, data=request.POST) # Pegar dados enviados do formulário.
-
-		if form.is_valid():
-			login(request, form.get_user()) # Criar/Atualizar a sessão de autenticação.
-
-			return redirect('home')
-	else:
-		form = AuthenticationForm()
-	context = {'form': form}
-	return render(request, 'blog/login.html', context)
-
-
-def logout_view(request):
-
-	logout(request) # Fecha a sessão de autenticacão
-
-	return redirect('home')

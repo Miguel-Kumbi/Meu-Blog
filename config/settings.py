@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +128,4 @@ MAILERS = {
     },
 }
 
-LOGIN_URL = '/login/'
+LOGIN_URL = 'login'
