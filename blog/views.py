@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
+
 
 def home(request):
 	# posts = Post.objects.all()
