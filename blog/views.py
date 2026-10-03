@@ -94,3 +94,10 @@ def post_publish(request, slug):
 		return redirect('post_detail', slug=post.slug)
 
 	return render(request, 'blog/post_confirm_publish.html', {'post': post})
+
+
+@login_required
+def drafts(request):
+	posts = Post.objects.filter(author=request.user, published_at__isnull=True).order_by('-published_at')
+	context = {'posts': posts}
+	return render(request, 'blog/drafts.html', context)

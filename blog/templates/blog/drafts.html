@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Meus Rascunhos
+{% endblock %}
+
+{% block content %}
+	<h1>Meus Rascunhos</h1>
+
+	{% for post in posts %}
+		<article class="post-draft">
+			<h2>
+				<a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+			</h2>
+
+			<p>{{ post.content|truncatewords:30 }}</p>
+
+			<footer>
+				<p><small>Autor: {{ post.author.username }}</small></p>
+				
+				{% if post.category %}
+					<p><small>Categoria: {{ post.category }}</small></p>
+				{% endif %}
+
+				{% if post.created_at %}
+					<p><small>Criado em: {{ post.created_at|date:"d/m/Y H:i" }}</small></p>
+				{% endif %}
+			</footer>
+			<hr>
+		</article>
+	{% empty %}
+		<p>Sem nenhum rascunho.</p>
+	{% endfor %}
+{% endblock %}

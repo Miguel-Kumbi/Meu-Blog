@@ -20,6 +20,7 @@
 			<p>
 				Olá, {{ user.username }}!
 			</p>
+			<a href="{% url 'drafts' %}">Meus Rascunhos</a>
 			<a href="{% url 'logout' %}">Sair</a>
 		{% else %}
 			<a href="{% url 'login' %}">Entrar</a>
