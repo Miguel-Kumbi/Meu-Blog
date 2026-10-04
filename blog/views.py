@@ -38,7 +38,7 @@ def post_create(request):
 		form = PostForm()
 	context = {'form':form}
 
-	return render(request, 'blog/post_form.html', context)
+	return render(request, 'blog/post_create.html', context)
 
 
 @login_required
@@ -59,7 +59,7 @@ def post_update(request, slug):
 		form = PostForm(instance=post)
 	context = {'form': form, 'post': post}
 
-	return render(request, 'blog/post_form.html', context)
+	return render(request, 'blog/post_update.html', context)
 
 
 @login_required

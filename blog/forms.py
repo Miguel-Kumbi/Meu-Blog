@@ -13,6 +13,29 @@ class PostForm(forms.ModelForm):
 			'tags'
 		]
 
+		widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Título do post',
+            }),
+            'slug': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'exemplo-do-meu-post',
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 12,
+                'placeholder': 'Escreva o conteúdo do seu post...',
+            }),
+            'category': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            'tags': forms.SelectMultiple(attrs={
+                'class': 'form-select',
+                'size': 5,
+            }),
+        }
+
 		def clean_title(self):
 			title = self.cleaned_data['title']
 
