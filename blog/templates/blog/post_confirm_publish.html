@@ -1,70 +1,70 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Publicar {{ post.title }} | Meu Blog
+	Publicar {{ post.title }} | Meu Blog
 {% endblock %}
 
 {% block content %}
 
 <div class="row justify-content-center">
 
-    <div class="col-12 col-md-8 col-lg-6">
+	<div class="col-12 col-md-8 col-lg-6">
 
-        <div class="card shadow-sm">
+		<div class="card shadow-sm">
 
-            <div class="card-body p-4 p-md-5 text-center">
+			<div class="card-body p-4 p-md-5 text-center">
 
-                <div class="mb-4">
+				<div class="mb-4">
 
-                    <span class="badge bg-warning text-dark fs-6">
-                        Rascunho
-                    </span>
+					<span class="badge bg-warning text-dark fs-6">
+						Rascunho
+					</span>
 
-                </div>
+				</div>
 
-                <h1 class="h3 fw-bold mb-3">
-                    Publicar este post?
-                </h1>
+				<h1 class="h3 fw-bold mb-3">
+					Publicar este post?
+				</h1>
 
-                <p class="text-muted mb-4">
-                    Tem certeza de que deseja publicar
-                    <strong>{{ post.title }}</strong>?
-                </p>
+				<p class="text-muted mb-4">
+					Tem certeza de que deseja publicar
+					<strong>{{ post.title }}</strong>?
+				</p>
 
-                <p class="text-muted small mb-4">
-                    Depois de publicado, o post ficará disponível
-                    na página inicial do Blog.
-                </p>
+				<p class="text-muted small mb-4">
+					Depois de publicado, o post ficará disponível
+					na página inicial do Blog.
+				</p>
 
-                <form method="post">
+				<form method="post">
 
-                    {% csrf_token %}
+					{% csrf_token %}
 
-                    <div class="d-flex justify-content-center gap-2">
+					<div class="d-flex justify-content-center gap-2">
 
-                        <a
-                            href="{% url 'post_detail' post.slug %}"
-                            class="btn btn-outline-secondary"
-                        >
-                            Cancelar
-                        </a>
+						<a
+							href="{% url 'post_detail' post.slug %}"
+							class="btn btn-outline-secondary"
+						>
+							Cancelar
+						</a>
 
-                        <button
-                            type="submit"
-                            class="btn btn-success"
-                        >
-                            Publicar Post
-                        </button>
+						<button
+							type="submit"
+							class="btn btn-success"
+						>
+							Publicar Post
+						</button>
 
-                    </div>
+					</div>
 
-                </form>
+				</form>
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-    </div>
+	</div>
 
 </div>
 

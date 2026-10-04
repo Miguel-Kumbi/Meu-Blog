@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
 from django.utils import timezone
+from django.core.exceptions import PermissionDenied
 from .models import Post
 from .forms import PostForm
 
@@ -46,7 +46,7 @@ def post_update(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 
 	if post.author != request.user:
-		return HttpResponseForbidden ('Sem permissão para editar este post.')
+		raise PermissionDenied
 
 	if request.method == 'POST':
 		form = PostForm(request.POST, instance=post)
@@ -67,7 +67,7 @@ def post_delete(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 
 	if post.author != request.user:
-		return HttpResponseForbidden ('Sem permissão para deletar este post.')
+		raise PermissionDenied
 
 	if request.method == 'POST':
 		post.delete()
@@ -84,7 +84,7 @@ def post_publish(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 
 	if post.author != request.user:
-		return HttpResponseForbidden('Você não tem permissão para publicar este Post.')
+		raise PermissionDenied
 
 	if request.method == 'POST':
 		post.published_at = timezone.now()

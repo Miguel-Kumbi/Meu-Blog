@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Acesso proibido | Meu Blog
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+	<div class="col-12 col-md-8 col-lg-6">
+
+		<div class="card shadow-sm border-warning">
+
+			<div class="card-body text-center p-5">
+
+				<div class="display-1 fw-bold text-warning">
+					403
+				</div>
+
+				<h1 class="h3 fw-bold mb-3">
+					Acesso proibido
+				</h1>
+
+				<p class="text-muted mb-4">
+					Não tem permissão para realizar esta ação.
+				</p>
+
+				<a
+					href="{% url 'home' %}"
+					class="btn btn-primary"
+				>
+					Voltar para o início
+				</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

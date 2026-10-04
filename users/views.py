@@ -5,18 +5,18 @@ from .forms import LoginForm, RegisterForm
 
 
 def register_view(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
+	if request.method == 'POST':
+		form = RegisterForm(request.POST)
 
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-    else:
-        form = RegisterForm()
+		if form.is_valid():
+			form.save()
+			return redirect('login')
+	else:
+		form = RegisterForm()
 
-    context = {'form': form,}
+	context = {'form': form,}
 
-    return render(request, 'users/register.html', context)
+	return render(request, 'users/register.html', context)
 
 
 def login_view(request):

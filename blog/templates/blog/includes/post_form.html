@@ -1,103 +1,103 @@
 <form method="post">
 
-    {% csrf_token %}
+	{% csrf_token %}
 
-    {% if form.non_field_errors %}
-        <div class="alert alert-danger">
-            {{ form.non_field_errors }}
-        </div>
-    {% endif %}
+	{% if form.non_field_errors %}
+		<div class="alert alert-danger">
+			{{ form.non_field_errors }}
+		</div>
+	{% endif %}
 
-    <div class="mb-3">
-        <label for="{{ form.title.id_for_label }}" class="form-label">
-            Título
-        </label>
+	<div class="mb-3">
+		<label for="{{ form.title.id_for_label }}" class="form-label">
+			Título
+		</label>
 
-        {{ form.title }}
+		{{ form.title }}
 
-        {% if form.title.errors %}
-            <div class="text-danger small mt-1">
-                {{ form.title.errors }}
-            </div>
-        {% endif %}
-    </div>
+		{% if form.title.errors %}
+			<div class="text-danger small mt-1">
+				{{ form.title.errors }}
+			</div>
+		{% endif %}
+	</div>
 
-    <div class="mb-3">
-        <label for="{{ form.slug.id_for_label }}" class="form-label">
-            Slug
-        </label>
+	<div class="mb-3">
+		<label for="{{ form.slug.id_for_label }}" class="form-label">
+			Slug
+		</label>
 
-        {{ form.slug }}
+		{{ form.slug }}
 
-        {% if form.slug.errors %}
-            <div class="text-danger small mt-1">
-                {{ form.slug.errors }}
-            </div>
-        {% endif %}
+		{% if form.slug.errors %}
+			<div class="text-danger small mt-1">
+				{{ form.slug.errors }}
+			</div>
+		{% endif %}
 
-        <div class="form-text">
-            Identificador utilizado no endereço do post.
-        </div>
-    </div>
+		<div class="form-text">
+			Identificador utilizado no endereço do post.
+		</div>
+	</div>
 
-    <div class="mb-3">
-        <label for="{{ form.content.id_for_label }}" class="form-label">
-            Conteúdo
-        </label>
+	<div class="mb-3">
+		<label for="{{ form.content.id_for_label }}" class="form-label">
+			Conteúdo
+		</label>
 
-        {{ form.content }}
+		{{ form.content }}
 
-        {% if form.content.errors %}
-            <div class="text-danger small mt-1">
-                {{ form.content.errors }}
-            </div>
-        {% endif %}
-    </div>
+		{% if form.content.errors %}
+			<div class="text-danger small mt-1">
+				{{ form.content.errors }}
+			</div>
+		{% endif %}
+	</div>
 
-    <div class="mb-3">
-        <label for="{{ form.category.id_for_label }}" class="form-label">
-            Categoria
-        </label>
+	<div class="mb-3">
+		<label for="{{ form.category.id_for_label }}" class="form-label">
+			Categoria
+		</label>
 
-        {{ form.category }}
+		{{ form.category }}
 
-        {% if form.category.errors %}
-            <div class="text-danger small mt-1">
-                {{ form.category.errors }}
-            </div>
-        {% endif %}
-    </div>
+		{% if form.category.errors %}
+			<div class="text-danger small mt-1">
+				{{ form.category.errors }}
+			</div>
+		{% endif %}
+	</div>
 
-    <div class="mb-4">
-        <label for="{{ form.tags.id_for_label }}" class="form-label">
-            Tags
-        </label>
+	<div class="mb-4">
+		<label for="{{ form.tags.id_for_label }}" class="form-label">
+			Tags
+		</label>
 
-        {{ form.tags }}
+		{{ form.tags }}
 
-        {% if form.tags.errors %}
-            <div class="text-danger small mt-1">
-                {{ form.tags.errors }}
-            </div>
-        {% endif %}
-    </div>
+		{% if form.tags.errors %}
+			<div class="text-danger small mt-1">
+				{{ form.tags.errors }}
+			</div>
+		{% endif %}
+	</div>
 
-    <div class="d-flex gap-2">
+	<div class="d-flex gap-2">
 
-        <a
-            href="{% url 'home' %}"
-            class="btn btn-outline-secondary"
-        >
-            Cancelar
-        </a>
+		<a
+			href="{% url 'home' %}"
+			class="btn btn-outline-secondary"
+		>
+			Cancelar
+		</a>
 
-        <button
-            type="submit"
-            class="btn btn-primary"
-        >
-            {{ submit_text }}
-        </button>
+		<button
+			type="submit"
+			class="btn btn-primary"
+		>
+			{{ submit_text }}
+		</button>
 
-    </div>
+	</div>
 
 </form>
