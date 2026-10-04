@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, login
-from .forms import RegisterForm
+from .forms import LoginForm, RegisterForm
 
 
 def register_view(request):
@@ -21,14 +21,14 @@ def register_view(request):
 
 def login_view(request):
 	if request.method == 'POST':
-		form = AuthenticationForm(request, data=request.POST) # Pegar dados enviados do formulário.
+		form = LoginForm(request, data=request.POST) # Pegar dados enviados do formulário.
 
 		if form.is_valid():
 			login(request, form.get_user()) # Criar/Atualizar a sessão de autenticação.
 
 			return redirect('home')
 	else:
-		form = AuthenticationForm()
+		form = LoginForm()
 	context = {'form': form}
 	return render(request, 'users/login.html', context)
 

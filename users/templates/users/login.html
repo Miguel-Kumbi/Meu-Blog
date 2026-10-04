@@ -1,23 +1,106 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Login
+    Entrar | Meu Blog
 {% endblock %}
 
 {% block content %}
 
-	<h1>Login</h1>
+<div class="row justify-content-center">
 
-	<form method="post">
+    <div class="col-12 col-md-6 col-lg-5">
 
-		{% csrf_token %}
+        <div class="text-center mb-4">
 
-		{{ form.as_p }}
+            <h1 class="fw-bold">
+                Entrar
+            </h1>
 
-		<button type="submit">
-			Entrar
-		</button>
+            <p class="text-muted">
+                Entre na sua conta para continuar.
+            </p>
 
-	</form>
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-body p-4">
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.username.id_for_label }}"
+                            class="form-label"
+                        >
+                            Utilizador
+                        </label>
+
+                        {{ form.username }}
+
+                        {% if form.username.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label
+                            for="{{ form.password.id_for_label }}"
+                            class="form-label"
+                        >
+                            Palavra-passe
+                        </label>
+
+                        {{ form.password }}
+
+                        {% if form.password.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+                        Entrar
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mt-3">
+
+            <small class="text-muted">
+                Ainda não tem uma conta?
+            </small>
+
+            <a href="{% url 'register' %}">
+                Criar conta
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}
